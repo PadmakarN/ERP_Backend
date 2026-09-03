@@ -4,7 +4,7 @@ import {
   updateLedgerService,
   getLedgersService,
   deleteLedgerService
-} from "../services/ledgerService.js";
+} from "../Services/ledgerService.js";
 
 /* ================= GET ALL LEDGERS ================= */
 export const getLedgers = async (req, res) => {
