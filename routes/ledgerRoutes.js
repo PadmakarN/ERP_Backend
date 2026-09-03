@@ -6,7 +6,7 @@ import {
   updateLedger,
   deleteLedger
 } from "../controllers/ledgerController.js";
-import { createLedgerService } from "../services/ledgerService.js";
+import { createLedgerService } from "../Services/ledgerService.js";
 
 const router = express.Router();
 router.post("/",(req,res,next)=>{
