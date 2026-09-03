@@ -4,7 +4,7 @@ import {
   updateUserService,
   getUsersService,
   deleteUserService
-} from "../services/userService.js";
+} from "../Services/userService.js";
 
 // CREATE
 export const createUser = async (req, res) => {
