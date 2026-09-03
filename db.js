@@ -1,5 +1,6 @@
 import sql from "mssql";
 import dotenv from "dotenv";
+
 dotenv.config();
 
 const config = {
@@ -7,10 +8,16 @@ const config = {
   password: process.env.DB_PASSWORD,
   server: process.env.DB_SERVER,
   database: process.env.DB_DATABASE,
+  port: 1433,
+
   options: {
     encrypt: true,
-    trustServerCertificate: true
+    trustServerCertificate: false
   },
+
+  connectionTimeout: 30000,
+  requestTimeout: 30000,
+
   pool: {
     max: 10,
     min: 0,
@@ -20,9 +27,13 @@ const config = {
 
 export const poolPromise = new sql.ConnectionPool(config)
   .connect()
-  .then(pool => {
+  .then(async pool => {
     console.log("✅ Connected to MSSQL database");
-    pool.request().query("SELECT 1");
+
+    await pool.request().query("SELECT 1");
+
+    console.log("✅ Database test query successful");
+
     return pool;
   })
   .catch(err => {
