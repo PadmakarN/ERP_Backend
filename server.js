@@ -28,7 +28,6 @@ const app = express();
 //   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
 //   allowedHeaders: ["Content-Type", "Authorization"]
 // }));
-import cors from "cors";
 
 const allowedOrigins = [
   "http://localhost:5173",
