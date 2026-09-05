@@ -23,7 +23,7 @@ dotenv.config();
 const app = express();
 
 app.use(cors({
-  origin: ["http://192.168.29.42:5173","http://localhost:5173"], // ✅ frontend origin(s)
+  origin: ["https://erp-frontend-mnm56bu9u-pnerp.vercel.app","http://localhost:5173"], // ✅ frontend origin(s)
   credentials: true, // ✅ cookie allow
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"]
