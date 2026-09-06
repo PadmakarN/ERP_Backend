@@ -59,12 +59,20 @@ router.post("/login", async (req, res) => {
     );
 
     // ✅ send token in cookie
-    res.cookie("token", token, {
-      httpOnly: true,
-      secure: false, // HTTP
-      sameSite: "lax", // ⭐ CHANGE THIS
-      maxAge: 24 * 60 * 60 * 1000,
-    });
+    // res.cookie("token", token, {
+    //   httpOnly: true,
+    //   secure: false, // HTTP
+    //   sameSite: "lax", // ⭐ CHANGE THIS
+    //   maxAge: 24 * 60 * 60 * 1000,
+    // });
+    // ✅ send token in cookie
+       res.cookie("token", token, {
+       httpOnly: true,
+       secure: true,
+       sameSite: "none",
+       path: "/",
+       maxAge: 24 * 60 * 60 * 1000,
+      });
 
     // ✅ Success
     res.status(200).json({
@@ -144,19 +152,31 @@ router.post("/register", async (req, res) => {
   // ===============================
   // 🧩 LOGOUT ROUTE
   // ===============================
-
-  router.post("/logout", (req, res) => {
-    res.clearCookie("token", {
-      httpOnly: true,
-      secure: false, // login ke jaise hi
-      sameSite: "lax",
-      path: "/",
-    });
-
-    return res.status(200).json({
-      success: true,
-      message: "Logged out successfully",
-    });
+   router.post("/logout", (req, res) => {
+  res.clearCookie("token", {
+    httpOnly: true,
+    secure: true,
+    sameSite: "none",
+    path: "/",
   });
+
+  return res.status(200).json({
+    success: true,
+    message: "Logged out successfully",
+  });
+});
+  // router.post("/logout", (req, res) => {
+  //   res.clearCookie("token", {
+  //     httpOnly: true,
+  //     secure: false, // login ke jaise hi
+  //     sameSite: "lax",
+  //     path: "/",
+  //   });
+
+  //   return res.status(200).json({
+  //     success: true,
+  //     message: "Logged out successfully",
+  //   });
+  // });
 
 export default router;
