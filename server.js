@@ -28,10 +28,12 @@ app.use(
       "https://erp-frontend-pnerp.vercel.app",
     ],
     credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
+
+app.options("*", cors());
 
 // const allowedOrigins = [
 //   "http://localhost:5173",
