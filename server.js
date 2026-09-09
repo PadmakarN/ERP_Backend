@@ -25,7 +25,7 @@ app.use(
   cors({
     origin: [
       "http://localhost:5173",
-       "https://padmakarserp.netlify.app"
+       "https://padmakarserp.netlify.app",
       "https://erp-frontend-pnerp.vercel.app",
     ],
     credentials: true,
